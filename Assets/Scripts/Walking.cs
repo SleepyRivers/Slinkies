@@ -7,7 +7,11 @@ public class Walking : MonoBehaviour
 // private Animator anim;
  private bool Ground;
 
- private void Awake()
+    // sound thingys DONT TOUCH OR ELSE
+    [SerializeField] private AudioSource jumpSFX;
+    [SerializeField] private AudioSource SlideSFX;
+
+    private void Awake()
  {
 //grab refeneces
   body = GetComponent<Rigidbody2D>();
@@ -28,11 +32,25 @@ transform.localScale = new Vector3(-1, 1, 1);
 
 //handles jumps
  if(Input.GetKey(KeyCode.UpArrow) && Ground)
- jump();
+        {
+            jump();
+            jumpSFX.Play();
+        }
+ 
  
  //Handles Animation
 // anim.SetBool("Running", horizontalInput != 0);
 // anim.SetBool("Ground", Ground);
+
+ // slidesound effect PROPERTY OF YURI DONT TOUCH
+ if((horizontalInput > 0 || horizontalInput < 0) && Ground && !SlideSFX.isPlaying)
+        {
+            SlideSFX.Play();
+        }
+ if(horizontalInput == 0 || !Ground)
+        {
+            SlideSFX.Stop();
+        }
  }
 
 //handles juming part 2
