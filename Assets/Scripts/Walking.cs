@@ -4,7 +4,7 @@ public class Walking : MonoBehaviour
 {
  [SerializeField] private float speed;
  private Rigidbody2D body;
-// private Animator anim;
+ private Animator anim;
  private bool Ground;
 
     // sound thingys DONT TOUCH OR ELSE
@@ -15,7 +15,7 @@ public class Walking : MonoBehaviour
  {
 //grab refeneces
   body = GetComponent<Rigidbody2D>();
-//  anim = GetComponent<Animator>();
+  anim = GetComponent<Animator>();
  }
 
  private void Update()
@@ -39,8 +39,8 @@ transform.localScale = new Vector3(-1, 1, 1);
  
  
  //Handles Animation
-// anim.SetBool("Running", horizontalInput != 0);
-// anim.SetBool("Ground", Ground);
+anim.SetBool("Running", horizontalInput != 0);
+anim.SetBool("Ground", Ground);
 
  // slidesound effect PROPERTY OF YURI DONT TOUCH
  if((horizontalInput > 0 || horizontalInput < 0) && Ground && !SlideSFX.isPlaying)
@@ -49,7 +49,7 @@ transform.localScale = new Vector3(-1, 1, 1);
         }
  if(horizontalInput == 0 || !Ground)
         {
-            SlideSFX.Stop();
+            SlideSFX.Stop(); 
         }
  }
 
@@ -57,6 +57,7 @@ transform.localScale = new Vector3(-1, 1, 1);
  private void jump()
  {
  body.velocity = new Vector2(body.velocity.x, 15);
+        anim.SetTrigger("Jump");
  Ground = false;
  }
 

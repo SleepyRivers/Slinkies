@@ -41,6 +41,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: bg
+    uniqueID: 2123458231
+    locked: 0
+  - name: mountains
+    uniqueID: 3059206451
+    locked: 0
+  - name: Tree layer
+    uniqueID: 2384983823
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground trees
+    uniqueID: 2826260729
     locked: 0
