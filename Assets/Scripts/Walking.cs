@@ -38,7 +38,7 @@ transform.localScale = new Vector3(-1, 1, 1);
 //handles juming part 2
  private void jump()
  {
- body.velocity = new Vector2(body.velocity.x, 5);
+ body.velocity = new Vector2(body.velocity.x, 15);
  Ground = false;
  }
 
