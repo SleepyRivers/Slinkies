@@ -10,6 +10,8 @@ public class Walking : MonoBehaviour
     // sound thingys DONT TOUCH OR ELSE
     [SerializeField] private AudioSource jumpSFX;
     [SerializeField] private AudioSource SlideSFX;
+    int delay = 10;
+    
 
     private void Awake()
  {
@@ -43,14 +45,21 @@ transform.localScale = new Vector3(-1, 1, 1);
 // anim.SetBool("Ground", Ground);
 
  // slidesound effect PROPERTY OF YURI DONT TOUCH
- if((horizontalInput > 0 || horizontalInput < 0) && Ground && !SlideSFX.isPlaying)
+ if(horizontalInput != 0 && Ground && !SlideSFX.isPlaying)
         {
             SlideSFX.Play();
+            
         }
- if(horizontalInput == 0 || !Ground)
+ if((horizontalInput == 0 || !Ground) && delay < 0)
         {
             SlideSFX.Stop();
         }
+ if(horizontalInput != 0 && Ground)
+        {
+            delay = 10;
+        }
+
+        delay--;
  }
 
 //handles juming part 2
